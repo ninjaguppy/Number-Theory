@@ -3,12 +3,83 @@
 \paragraph{Problem 6:} Let \(a,b \in \ZZ \). Show that the equation
 \(ax+by =c\) has solutions in the integers iff \((a,b)\mid c\).
 
+\begin{proof}
+  (\(\implies \)) For simplicity, let \(x,y\) be our integer solutions to
+  \(ax+by=c\). Let \(d=(a,b)\) and write \(a=kd, b=\ell d\) for some
+  \(k, \ell \in \ZZ \) (this is possible because \(d|a,b\) definition). But then
+  \begin{align*}
+    kdx+\ell dy &= d(kx + \ell y) = c,
+  \end{align*}
+  and so \((a,b) = d \mid c\)
+
+  (\(\impliedby \)) Suppose \(d=(a,b) \mid c\). Since \(d\) is the gcd of
+  \(a,b\) we know that we can make \(d\) as a linear combination of integers
+  (since \(\ZZ \) is a PID), so let \(k,\ell \in \ZZ \) be such that
+  \(d=ak+b\ell\)
+  Since \(d\mid c\), let \(n \in \ZZ \) be such that \(c=dn\). But then if we
+  multiply our linear combination by \(n\) we have that
+  \(c=dl / a(kn) + b(\ell n)\) and we are done!
+\end{proof}
+
 \paragraph{Problem 10:} Suppose that \((u,v)=1\). Show that \((u+v,u-v)\) is
 either 1 or 2.
+
+\begin{proof}
+  Set \(d= (u+v,u-v)\), so \(d\mid u+v\) and \(d\mid u-v\)---hence it divides
+  any linear combination of them. In particular,
+  \begin{align*}
+    d &\mid  (u+v)+(u-v) = 2u \\
+    d &\mid  (u+v)-(u-v) = 2v \\
+  \end{align*}
+  Since \(d\mid 2u\) and \(2v\), it must then divide \((2u,2v)=2(u,v)=2\). So we
+  have that \(d\mid 2 \implies d=1,2\).
+\end{proof}
 
 \paragraph{Problem 12:} Suppose that we take several copies of a regular polygon
 and try to fit them evenly around a common vertex. Prove that this only possible
 polygons are triangles, squares, and hexagons
 
-\paragraph{Problem 16:} If \((u,v)=1\) and \(uv=a^2\), thow that \(u\) and \(v\)
+\begin{proof}
+  It is well known\footnote{And by well known I mean that I knew there was a
+    formula but I had to google it}
+  that for a regular \(n\)-gon, the interior
+  angles are given \(\frac{180(n-2)}{n}\). We seek values of \(N\) such that
+  \[
+    \left. \frac{180(n-2)}{n} \right| 360 \implies 180(n-2) \mid 360n
+  \]
+  This means that there is some \(k \in \ZZ \) such that
+  \[
+    180k(n-2) = 360n  \implies n = \frac{360k}{180k-360}
+  \]
+  Since \(n\) must be an positive integer, we seek values of \(k\) that give
+  these criterion. Notice that \(k\) corresponds to the number of copies of the
+  \(n\)-gon that fit around the circle, so we need only check \(k \in \ZZ ^+\).
+  Computing \(n\) for a handful of values of \(k\), we see that:
+  \[\arraycolsep=1.4pt\def\arraystretch{2.2}
+    \begin{array}{c|rl}
+    k=1 & \dfrac{360}{-180} &= -2 \\
+    k=2 & \dfrac{720}{0} \\
+    k=3 & \dfrac{1080}{180} &= 6\\
+    k=4 & \dfrac{1440}{360} &= 4 \\
+    k=5 & \dfrac{1800}{540} &= \frac{10}{3} \\
+    k=6 & \dfrac{2160}{720} &= 3 \\
+    k=7 & \dfrac{2520}{900} &= 2.8 \\
+    \end{array}
+    \]
+    The sequence is decreasing for \(k\geq 3\) and has a limit of 2---thus the 3
+    integer values of \(n\) given above are the only integer solutions for all
+    possible values of \(k\).
+\end{proof}
+
+\paragraph{Problem 16:} If \((u,v)=1\) and \(uv=a^2\), show that \(u\) and \(v\)
 are both squares.
+
+\begin{proof}
+  Since \((u,v)=1\)\), they share no prime factors. We can then factor
+  \(u=p_1^{a_1}\cdots p_k^{a_k}\) and \(v=q_1^{b_1}\cdots q_k^{b_k}\) where
+  \(p_i\neq q_j\) for all \(i,end\). It follows that
+  \(a^2=p_1^{a_1}\cdots p_k^{a_k}q_1^{b_1}\cdots q_t^{b_t}\) and we cannot
+  simplify this since none of the \(p_i\) are equal to any of the \(q_j\). But
+  since this product is a square, each of the \(a_i\) and \(b_j\) are
+  even---hence \(u\) and \(v\) must be squares as well.
+\end{proof}
