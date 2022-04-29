@@ -1,0 +1,103 @@
+\documentclass[12pt]{report}
+
+% opening
+%\pagestyle{headandfoot}
+%\runningheadrule
+%\runningheader{Lucas Kerbs}
+%{Math 341 Notes \thepage\ of \numpages}
+%{\today}
+%\runningfooter{}{}{}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lucas Kerbs}
+\chead{Math 341 Notes: Page \thepage }
+\lhead{\today}
+
+% load packages
+\usepackage{amsmath,amsfonts,amssymb,amsthm, mathtools, mathrsfs, faktor, bbm}
+\usepackage{wrapfig}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{blindtext}
+\usepackage{enumerate}
+\usepackage[margin=1.0in]{geometry}
+
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{definition}{Definition}
+
+
+
+\theoremstyle{theorem}
+\newtheorem*{remark}{Remark}
+\newtheorem{lemma}{Lemma}
+\newtheorem*{nlemma}{Lemma}
+\newtheorem*{ntheorem}{Theorem}
+\newtheorem{prop}{Proposition}
+\newtheorem{corollary}{Corollary}
+
+
+\newcommand{\incfig}[1]{%
+  \def\svgwidth{0.5\columnwidth}
+  \import{./images/}{#1.pdf_tex}
+}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\definecolor{fgreen}{RGB}{34,169,75}
+\definecolor{gpurple}{RGB}{152,68,158}
+
+
+\newcommand{\im}{\mathrm{Im}}
+\newcommand{\re}{\mathrm{Re}}
+\newcommand{\res}{\mathrm{Res}}
+\newcommand{\pv}{\mathrm{p.v.}}
+\newcommand{\tr}{\mathrm{tr}}
+
+\newcommand{\word}[1]{\quad \text{#1} \quad}
+\newcommand{\dz}[1][z]{\hspace{2pt}\mathrm{d#1}}
+\newcommand{\dx}[1][x]{\hspace{2pt}\mathrm{d#1}}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\newcommand{\bracket}[1]{\left[ #1 \right]}
+\newcommand{\cparen}[1]{\left\{ #1 \right\}}
+\newcommand{\eval}[3]{\left. #1 \right|_{#2}^{#3}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+
+
+
+% General shortcuts
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\Id}{\mathbbm{1}}
+\newcommand{\wms}{\textsc{wms} }
+\newcommand{\wma}{\textsc{wma} }
+\newcommand{\wwlog}{\textsc{wlog} }
+\newcommand{\Arg}{\text{Arg }}
+\newcommand{\Log}{\text{Log }}
+\newcommand{\st}{s.t.\ }
+\newcommand{\ie}{i.e.\ }
+\renewcommand\qedsymbol{$\blacksquare$}
+\DeclareMathOperator{\ord}{ord}
+
+\begin{document}
+\tableofcontents
+
+\input{Chapters/Math341Chapter1}
+\input{Exercises/Math341Ch1Ex}
+\input{Chapters/Math341Chapter2}
+\input{Exercises/Math341Ch2Ex}
+\input{Chapters/Math341Chapter3}
+\input{Exercises/Math341Ch3Ex}
+\end{document}

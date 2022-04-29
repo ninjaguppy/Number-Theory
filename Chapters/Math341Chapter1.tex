@@ -1,0 +1,209 @@
+\chapter{Unique Factorization}\label{ch:One}
+
+\section{Unique Factorization in \(\ZZ \)}\label{sec:introduction}
+
+We say that \(a\) divides \(b\) if there is some \(c\) \st \(b=ac\)---we write
+\(a\mid b\). A \textbf{prime} number is whose only divisors are \(1 \text{ and
+} p\). Of great
+interest is the function \(\pi(x)\)---which outputs the number of primes between
+1 and \(x\).
+
+\begin{theorem}
+  True facts about dividing
+  \begin{enumerate}
+    \item \(a \mid  a\) for \(a\neq 0\).
+    \item If \(a \mid b\) and \(b\mid a\), then \(a=\pm b\)
+    \item If \(a\mid b, b\mid c\), then \(a\mid c\)
+    \item If \(a \mid b, a\mid c\), then \(a \mid \alpha b+ \beta c\)
+  \end{enumerate}
+\end{theorem}
+
+\begin{definition}[ord\(_p\)]
+  \label{def:ord}
+  Let \(n \in \ZZ \), \(p\) a prime. Then \(\ord(n)=a\) where \(a\) is the
+  largest integer such that \(p^a\mid n\) but \(p^{a+1}\nmid n\). Define \(\ord (0)=\infty\).
+\end{definition}
+%
+\(\ord\) gives the number of times that \(p\) divides \(n\)---the power of \(p\)
+in \(n\)'s prime decomposition. On that note, every \(n \in \ZZ \) has a unique
+prime decomposition:
+\begin{theorem}
+  For every nonzero \(n \in \ZZ \), there is a prime decomposition
+  \[
+    n = (-1)^{\varepsilon(n)} \prod_p p^{a(p)}
+  \]
+  with the exponents uniquely determined by \(n\). In fact, we have that
+  \(a(p)=\ord n\).
+\end{theorem}
+
+See that it must be the case that all but finitely many of \(a(p)\) must be
+0---or else we have some problems with \(n\). The fact that \(\ZZ \) is a PID
+plays nicely with the following definition
+
+\begin{definition}[GCD]
+  \label{def:gcd}
+  Let \(a,b \in \ZZ \). An integer \(d\) is called the gcd of \(a\) and \(b\) if
+  every other common divisor of \(a\) and \(b\) divides \(d\)
+\end{definition}
+
+You can use theorem 1 to show that the gcd is determined up to sign---so we can
+speak of \emph{the} gcd. Even better (if you know some rings) is the following
+
+\begin{lemma}
+  Let \(a,b \in \ZZ \). If \((a,b) = (d)\), then \(d\) is the gcd of \(a\) and \(b\).
+\end{lemma}
+
+We say that \(a,b\) are \textbf{relatively prime} is their only common divisors
+are \(\pm 1\). It is worth noting that if \(a | bc\) and \((a,b) = 1\) (where
+\((a,b)\) denotes the gcd), then it must be the case that \(a|c\). This has two
+important consequences
+
+\begin{corollary}
+  If \(p\) is prime and \(p | bc\), then either \(p| b\) or \(p | c\). (notice
+  the hook into prime ideals)
+\end{corollary}
+
+\begin{corollary}
+  For \(p\) prime and \(a,b \in \ZZ \), \(\ord ab = \ord a + \ord b\).
+\end{corollary}
+
+\section{Unique Factorization in \(k[x]\)}%
+\label{sec:1.2}
+
+This section retells the story of section 1 but in the case of a polynomial ring
+over a field --- nothing to note if I'm being honest.
+
+\section{Unique Factorization in a PID}%
+\label{sec:1.2}
+
+\begin{definition}[Euclidean Domain]
+  \label{def:Edom}
+  If \(R\) is a commutative domain, it is a Euclidean domain if there is a
+  function \(\lambda: R^+ \to \NN \cup \{0\} \) such that if
+  \(a,b \in R, b \neq 0\), then there exists \(c,d \in R\) with the property
+  that \(a=cb+d\) and either \(d=0\) or \(\lambda(d) < \lambda(b)\).
+\end{definition}
+
+Both \(\ZZ \) and \(k[x]\) (for \(k\) a field) are EDs. In \(\ZZ \) we can use
+the standard absolute value function. For \(p \in k[x]\), use \(\lambda(p)=\textrm{deg}(p)\).
+
+In particular, it can be proven that every ED is a PID---the converse is not
+true but there aren't many readily available examples. Because of this nice
+structure, we inherit the same notion of divisibility. We say an element
+\(u \in R\) is a \textbf{unit} if \(u | 1\)---\ie units have a mult.\ inverse. Two
+elements \(a,b \in R\) are \textbf{associate} if \(a=bu\) for some unit \(u\).
+An element \(p \in R\) is \textbf{irreducible} if \(a|p\) means that \(a\) is a
+unit or an associate of \(p\). A nonunit \(p \in R\) is prime if \(p \neq 0\)
+and \(p|ab \implies p|a\; \textrm{ or } p|b\). Whiles these seem different, in a
+general PID we have that prime \(\Leftrightarrow\) irreducible.
+
+As seen in the previous two sections, our theory becomes richer when we utilize
+the language of ideals. Indeed, \(a\mid b \Leftrightarrow (b) \subset (a)\),
+\(u \in R\) is a unit \(\Leftrightarrow (u) = R\) (since \(u\) has a
+multiplicative inverse), \(a,b\) are associate \(\Leftrightarrow (a)=(b)\)
+(simply multiply by the correct unit), \(p\) is prime
+\(\Leftrightarrow ab \in (p) \implies a \in (p) \textrm{ or } b \in p )\).
+Even better, while the concept of a gcd does not exist in a general ring, since
+we are in a PID, we get the follwing resul:
+
+\begin{prop}
+  Let \(R\) be a PID and \(a,b \in R\). Then \(a\) and \(b\) have a greatest
+  common divisor \(d\), and \((a,b) = (d)\).
+\end{prop}
+
+\begin{proof}
+  Consider \((a,b)\)---since \(R\) is a PID, there is an element \(d\) s.t.\
+  \((a,b)=(d)\). Further, \((a) \subset(d)\) and \((b)\subset(d)\) so
+  \(d \mid a, d \mid b\). Now suppose \(d'\mid a, d'\mid b\). Then
+  \((a) \subset(d'), (a) \subset(d')\). And so it must be the case that
+  \((d) = (a,b) \subset(d')\)---and hence \(d \mid d'\), so \(d\) is our gcd.
+\end{proof}
+
+\begin{remark}
+  Note that in the above case we can have \((d)=(d')\), but then \(d\) and
+  \(d'\) are associates---and we only care about gcd up to associates (in the
+  same way that in \(\ZZ \) we have a \(\pm\) problem if we look for a ``totally
+  unique'' gcd.)
+\end{remark}
+
+From this proposition, we get two immediate corollaries---if \(a,b\) are
+relatively prime, then \((a,b) = R\) (relatively prime means you can make a
+linear combination to get 1) and that irreducible \(\implies \) prime.
+
+We now endevor to prove that every nonzero \(a \in R\) is a product of
+irreducible elements---we use the ascending chain condition!
+
+\begin{lemma}
+  A PID obeys the ASC.
+\end{lemma}
+
+\begin{proof}
+  Let \((a_1) \subset(a_2) \subset \dots\) be an ascending chain of ideals in \(R\), and
+  let \(I\) be the union along the chain. Since \(R\) is a PID, \(I = (a)\)
+  for some \(a \in R\). But then \(a\) is in the union along a chain, so it must
+  be in one of the \((a_k)\)---so \(I \subset(a_k)\) and we have that chain must
+  be eventually constant!
+\end{proof}
+
+\begin{prop}
+  Every nonzero nonunit of a PID is a product of irreducibles.
+\end{prop}
+
+\begin{proof}
+  First we show that \(a\) is divisible by an irreducible. For there to be any
+  meat, suppose that \(a\) is \emph{not} irreducible. But then \(a=a_1b_1\) for
+  \(a_1,b_1\) nonunits. If \(a_1\) is irrecducible, we are done! If it is not,
+  then we can factor \(a_1=a_2b_2\). Continuing, we get a chain
+  \((a) \subset(a_1) \subset(a_2) \subset \cdots\)---which must be eventually
+  constant, giving us the required \(a_k\), an irreducible which divides \(a\).
+
+  Now we show that we can break down \(a\) entirely into irreducibles. For a
+  nonirreducible \(a\), we have some irred \(p_1\) s.t. \(p_1\mid a\), so we can
+  write \(a = p_1c_1\). If \(c_1\) is a unit, we are done. If it is not we can
+  factor further as \(c_1=p_2c_2\). Continuing, we get a chain
+  \((c) \subset(c_1) \subset(c_2) \subset \cdots\)---which must be eventually
+  constant, giving us the required \(c_k\) which is a unit. Thus, we can writ
+  \(a=p_1p_2\cdots p_kc_k\), a product of irreducibles.
+\end{proof}
+
+Now this ASC is incredibly powerful. In fact, we use it to prove the following
+Lemma that will help us reproduce an analogue of the ord function in a general
+PID.
+
+\begin{lemma}
+  Let \(p\) be a prime and \(a\neq 0\). Then there is an integer \(n\) such that
+  \(p ^{n} \mid a\) but \(p ^{n+1} \nmid a\).
+\end{lemma}
+
+Since this \(n\) is uniquely determined, we set \(n = \ord_{p} a\). It is not
+difficult to show that \(\ord\) obeys the same multiplicative \(\to \) additive
+identity that it does in the \(\ZZ \) and \(k[x]\). Now we seek to take the
+previous proposition a bit further and show uniqueness of the decompostion. To
+do so, we need to deal with the case of associate primes. Let \(S\) be a set of
+primes in \(R\) such that
+\begin{enumerate}
+  \item Every prime in \(R\) is associate to a prime in \(S\)
+  \item No two primes in \(R\) are associate
+\end{enumerate}
+
+\begin{theorem}
+  Let \(R\) be a PID and \(S\) a set of primes as discussed above. Then if
+  \(a \in R, a \neq 0\), then we can write
+  \[
+    a = u \prod_{p \in S} p^{e(p)}
+  \]
+  where \(u\) is a unit. The units and exponents are uniquely determined and
+  \(e(p)=\ord_p a\).
+\end{theorem}
+
+\begin{proof}
+  Existence is already proven. Uniqueness follows directly from the properties
+  that we have already stated about \(\ord\).
+\end{proof}
+
+\begin{remark}
+  Section 1.4 is uninteresting. Let \(\omega\) be the primitive third root of
+  unity. Then \(Z[i]\) and \(\ZZ [\omega]\) are Euclidean Domains. For
+  \(\ZZ [i]\), \(\lambda(a+bi)=a^2+b^2\). For
+  \(\ZZ [\omega], \lambda(\alpha)=\lambda(a+b\omega)=\alpha \overline{\alpha}\).
+\end{remark}

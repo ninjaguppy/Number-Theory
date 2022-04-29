@@ -1,0 +1,6 @@
+* Hello!
+
+These are my notes for a sort of reading course going through Ireland and Rosens
+"A Classical Introduction to Modern Number Theory." The pdf is above, which
+contains notes (along with personal musing on number theory and the structure of
+the text) as well as selected exercises for each chapter. Enjoy!

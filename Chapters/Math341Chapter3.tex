@@ -1,0 +1,212 @@
+\chapter{Congruence}\label{ch:Three}
+
+\section{Elementary Observations}%
+\label{sec:elob}
+
+History: Diophantus asked when equations in \(x\) with integer coefficients have
+integer solutions. For example, does \(x^2-117x+31=0\)? You solves my looking at
+the sign of the polynomial for even and odd values of \(x\). We will show in
+this chapter that we can exploint properties of  \(\ZZ _m\) to answer these
+questions.
+
+\section{Congruence in \(ZZ\)}%
+\label{sec:cong}
+
+\begin{definition}[Congruence]
+  \label{def:cong}
+  If \(a,b,m \in \ZZ\), and \(m\neq 0\), then we say that \(a\) is
+  \emph{congruent to b mod m} of \(m|(b-a)\) and we write \(a \equiv b (m)\)
+\end{definition}
+
+\(\equiv\) is an equivalence relation. We will use the notation \(\overline{a}\)
+for the class of integers equivalent to \(a\). As long as we fix an \(m\), we
+get the following characterization:
+
+\begin{prop}
+\begin{enumerate}[(a)]
+  \item \(\overline{a} = \overline{b} \) iff \(a \equiv b (m)\)
+  \item \(\overline{a}\neq \overline{b}\) iff
+        \(\overline{a} \cap \overline{b} \) is empty
+  \item There are exactly \(m\) distance congruence classes mod \(m\).
+\end{enumerate}
+\end{prop}
+
+Why do we care? Well it turns out that the results allows us to turn \(\ZZ_m\)
+into a ring! Not only that, the standard projection \(\ZZ \to \ZZ _m\) is a
+homomorphism so it doesn't matter ``when'' we do the modulo! Even
+better---things cross over into the polynomial ring. If \(p \in \ZZ [x]\) and
+\(p(0)\) and \(p(1)\) are both odd, then \(p\) can't have any integer roots!
+
+\section{On \(ax \equiv b (m)\)}%
+\label{sec:axeqb}
+How do we know when \(ax \equiv b (m)\) is solvable? How many solutions should
+we expect it to have? The idea of a ``number'' of solutions may seem strange,
+but if we have \(f(x_1, \dots , x_n)\equiv 0 (m)\), then we consider
+\((a_1, \dots,a_n) \sim (b_1, \dots,b_n)\) if they are the same class in
+\({\ZZ_m}^n\). For example, \(3,8,13,18\) all solve \(6x\equiv 3 (15)\), but
+\(3\equiv 18 (15)\), so we say there are only 3 solutions.
+
+Let \((a,m) = d>0\)  and \(a'=\frac{a}{d}\), \(m'=\frac{m}{d}\)---note that
+this means that \(a'\) and \(m'\) are coprime
+
+\begin{prop}
+  The congruence \(ax \equiv b (m)\) has solutions if and only if \(d \mid b\).
+  If \(d\mid b\), then there are exactly \(d\) solutions. If \(x_0\) is a
+  solution, then the other solutions are given by \(x_0+m', x_0+2m', \dots x_0+(d-1)m'\).
+\end{prop}
+
+\begin{proof}
+  If \(x_0\) is a solutins, then \(a x_0-b =m y_0\) for some \(y_0 \in \ZZ \).
+  Thus, \(a x_0 + m y_0=b\). \(d\) divides the LHS, so it must divide the RHS.
+
+  Conversely, if \(d \mid b\), then there must be integers \(x_0', y_0'\) \st
+  \(a x_0'-m y_0' = d\). Let \(c=\frac{b}{d}\) and we have
+  \(a(x_0'c)-m(y_0'c)=b\)---but if we let \(x_0=x_0'c\), we are done!
+
+  Now suppose that \(x_0,x_1\) are solutions.
+  \(a x_0\equiv b, a x_1\equiv b \implies a(x_1-x_0)\equiv 0\), and so
+  \(m\mid a(x_1-x_0)\) \emph{and} \(m'\mid a'(x_1-x_0)\). But we have already
+  stated \(m'\) and \(a'\) are coprime, so \(m'|x_1-x_0\) and thus
+  \(x_1=x_0+km'\). The bounds on \(k\) are immediate.
+\end{proof}
+
+Now this proposition has two immediate (and important) consequences when it comes
+to equivalences with unique solutions
+
+\begin{corollary}
+  If \(a\) and \(m\) are coprime, then \(ax \equiv b (m)\) has exactly one solution
+\end{corollary}
+
+\begin{corollary}
+If \(p\) is prime and \(a \not\equiv 0(p)\), then \(ax\equiv b (p)\) has exactly
+one solution.
+\end{corollary}
+
+We can interpret these props and corrs in as ring theoretic statements. Recall
+that the units in \(\ZZ_m\) are the invertable elements and for a multiplicative
+group. In particular, \(a \in \ZZ _m\) is a unit iff \(ax=1\) is
+solvable---which happens precisely when \(a\) and \(m\) are coprime. It follows
+that there are \(\phi(m)\) units in \(\ZZ_m\).
+
+In the special case that \(p\) is
+prime, all nonzero elements of \(\ZZ_p\) are coprime to \(p\) and hence units.
+Thus, \(\ZZ _p\) is field! If \(m\) is not prime, then \(m=m_1m_2\). But then in
+\(\ZZ _p\), \(\overline{m_1} \overline{m_2}=\overline{0}\)---so we are not even
+a domain, let alone a field. To summarize,
+
+\begin{prop}
+  An element \(\overline{a} \in \ZZ _m\) is a unit iff \((a,m)=1\). There are
+  exactly \(\phi(m)\) units in \(\ZZ _m\). Further, \(\ZZ _m\) is a field iff
+  \(m\) is prime.
+\end{prop}
+
+\begin{corollary} [Euler's Theorem]
+If \((a,m)=1\), then \(a^{\phi(m)}\equiv 1(m)\)
+\end{corollary}
+
+\begin{proof}
+  We know that the units of \(\ZZ _m\) form a group of order \(\phi(m)\). Since
+  \(a\) is a unit, Lagagrange's theorem tells us that
+  \(\overline{a}^{\phi(m)}=\overline{1}\) \(\implies a^{\phi(m)}\equiv (m)\).
+\end{proof}
+
+\begin{corollary} [Fermat's Little Theorem]
+  If \(p\) is prime and \(p \nmid a\), then \(a^{p-1}\equiv 1 (p)\).
+\end{corollary}
+
+\begin{proof}
+  The above corr and the fact that for \(p\) prime we have that \(\phi(p)=p-1\).
+\end{proof}
+
+
+\section{The Chinese Remainder Theorem}%
+
+When our \(m\) is composite, we can sometimes simplify our correspondence so a
+system of congruences. Indeed, such a simplification is possible in a much
+larger class of rings (the PID case is in the selected problems for this
+chapter).
+
+\begin{lemma}
+If \(a_1, \dots , a_n\) are all relatively prime to \(m\), then so is their product.
+\end{lemma}
+
+\begin{proof}
+  \(U(\ZZ_m)\) is a group, and hence closed under multiplication.
+\end{proof}
+
+\begin{lemma}
+Suppose \(a_1, \dots a_t\) all divide \(n\) and that the \(a_i\) are pairwise
+coprime. Then \(a_1\cdots a_t\mid n\).
+\end{lemma}
+\begin{proof}
+  We proceed by induction on \(t\). \(t=1\) is immediate. Now assume that our
+  lemma is true for \(t-1\), so \(a_1\cdots a_{t-1} \mid n\). By the previous
+  lemma, \(a_t\) is prime to \(a_1\cdots a_{t-1}\). It follows that there are
+  \(r,s \in \ZZ \) \st \(ra_t + sa_1\cdots a_{t-1} =1\). If we multiply both
+  sides by \(n\), see that the LHS is divisible by \(a_1\cdots a_t\)---so \(n\)
+  must be as well!
+\end{proof}
+
+Now we state the big boy theorem feared by many an undergraduate:
+
+\begin{theorem} [Chinese Remainder Theorem]
+Suppose \(m=m_1\cdots m_t\) where the \(m_i\) are pairwise coprime. Let
+\(b_1, \dots , b_t \in \ZZ \) and consider the system
+\[
+  x \equiv b_1(m_1), x \equiv b_2 (m_2), \dots ,x \equiv b_t (m_t)
+\]
+This system always has solutions and any two solutions differ by a multiple of \(m\).
+\end{theorem}
+
+\begin{proof}
+  Let \(n_i= \frac{m}{m_i}\). From two lemmas ago (using \verb|\ref| is too much
+  work) we have that \((m_i,n_i)=1\). Thus, we have \(r_i,s_i \in \ZZ \) \st
+  \(r_i m_i+s_i n_i=1\). Let \(e_i=s_i n_i\)---and so \(e_i\equiv 1 (m_i)\) but
+  \(e_i \equiv 0 (m_j)\) for \(i\neq j\). Now define \(x_0= \sum_{i=0}^t b_i e_i\). Notice that this means that
+  \(x_0 \equiv b_i e_i (m_i)\implies x_0\equiv b_i(m_i)\) and so \(x_0\) is a
+  solution!\footnote{I'm not sure what do with this, but it sure smells like
+    some sort of orthogonal decomp. What are the vectors? What is the inner
+    product? Honestly, it might be a bit more clear in the context of the more
+    general statement of the theorem---linear algebra over a PID has a ton of structure.}
+
+  Now suppose that \(x_1\) is another solution. Then \(x_1-x_0\equiv 0 (m_i)\)
+  for all \(i\). In other words, each \(m_i\mid x_1-x_0\), and so by the other
+  previous lemma \(m = m_1\cdots m_t | x_1-x_0\).
+\end{proof}
+
+This has a nice ring theoretic interpretation. Recall that if we have a handful
+of rings, \(R_1, \dots , R_t\), we can form a new ring
+\(S = R_1 \oplus \cdots \oplus R_t\) with operations done component-wise. In
+this case \(U(S) = U(R_1) \times \cdots \times U(R_t)\).
+
+Now we turn our attention back to the ring \(\ZZ_m\). Recalling some category
+theory, recall that both we have canonical maps \(\psi_i: Z\to \ZZ_{m_i}\) and
+\(\alpha_i: \ZZ _{m_i} \hookrightarrow \oplus \ZZ_{m_j}\). Since \(\alpha_i\)
+exists for each \(m_i\), we have an induced map:
+% https://q.uiver.app/?q=WzAsMyxbMCwwLCJcXFpaIl0sWzAsMiwiXFxaWl97bV9pfSJdLFsyLDIsIlxcYmlnb3BsdXNfe21fan0gXFxaWl97bV9qfSJdLFswLDEsIlxccGhpX0kiXSxbMSwyLCJcXGFscGhhX0kiXSxbMCwyLCJcXHBoaSA9IFxccHJvZCBcXGFscGhhX0kiXV0=
+\[\begin{tikzcd}
+	\ZZ \\
+	\\
+	{\ZZ_{m_i}} && {\bigoplus_{m_j} \ZZ_{m_j}}
+	\arrow["{\psi_i}", from=1-1, to=3-1]
+	\arrow["{\alpha_i}", from=3-1, to=3-3]
+	\arrow["{\psi = \prod \alpha_i}", from=1-1, to=3-3]
+\end{tikzcd}\]
+
+Now we consider the image and kernel of \(\psi\). By the CRT above, we have that
+\(\psi\) is onto. Further, the kernel is precisely the ideal \(m\ZZ \). Thus, we
+have an isomorphism between
+\[
+  \ZZ _m \simeq \ZZ_{m_1} \oplus \cdots \oplus \ZZ_{m_t}
+\]
+whenever \(m=m_1\cdots m_t\) and the \(m_i\) are pairwise coprime. This
+immedately tells us about the units of \(\ZZ _m\):
+\(\phi(m)=\phi(m_1)\cdots\phi(m_t)\). If we consider the prime decompositon of
+\(m\), \(m= p_1^{a_1}\cdots p_t^{a_t}\), then
+\(\phi(m)= \phi(p_1^{a_1})\cdots \phi(p_t^{a_t})\). Now we know that
+\(\phi(p^a)=p^a-p^{a-1}=p^a(1-1 / p)\) and it follows that
+\begin{align*}
+  \phi(m) &= \prod p_i^{a_i}\left(1-\frac{1}{p_i}\right) \\
+          &= p_1^{a_1}\cdots p_t^{a_t} \prod\left(1-\frac{1}{p_i}\right) \\
+          &= m \prod\left(1-\frac{1}{p_i}\right)
+\end{align*}

@@ -1,0 +1,319 @@
+\chapter{Applications of Unique Factorization}\label{ch:Two}
+
+Before we begin\dots I just couldn't get into this chapter. I tried so hard to
+care but none of it felt even remotely motivated. The mobius inversion theorem
+seemed cool and useful, but I just could not find myself \emph{caring} about
+this. I feel bad about that, I really do, but this just isn't what I came to
+number theory for---I am much more interested in the ring theoretic side of
+things (chapters 3 and 4 and all that).
+
+\section{Infinitely Many Primes in \(\ZZ\)}%
+\label{sec:InfManyPrimes}
+
+\begin{theorem}[Euclid]
+  In the ring \(\ZZ \) there are infinitely many primes.
+\end{theorem}
+
+\begin{proof}
+  Suppose we have a finite list of positive primes \(p_1, \dots ,p_n\). But
+  then consider \(N= (p_1\cdots p_n)+1\). Clearly \(N\) is not divisible by any
+  of our primes---so it is either a prime in and of itself or is divisible by
+  some prime larger that \(p_n\). It follows that there must be infinite
+  positive primes.
+\end{proof}
+
+What about \(k[x]\)? If \(k\) is infinite then it is obvious as \(x-a\) is monic
+and irreducible for all \(a \in k\). If \(k\) is finite we can adapt the above
+proof as follows
+
+\begin{theorem}
+  If \(k\) is a finite field, then there are infinitely many primes in \(k[x]\).
+\end{theorem}
+
+\begin{proof}
+  Suppose we have a finite list of positive primes \(f_1, \dots ,f_n\). But
+  then consider \(g= (f_1\cdots f_n)+1\). Clearly \(g\) is not divisible by any
+  of our primes (since that would mean that \(f_i\mid 1\) for some \(f_i\))---so
+  \(g\) is either a prime in and of itself or is divisible by some prime larger
+  that \(f_n\). It follows that there must be infinite positive primes.
+\end{proof}
+
+See that in this case there are infinitely many primes which are not associate
+(differ by multiplication by a unit). This is not always the case. Let
+\(p \in Z\) and let \(\ZZ_{(p)}\) denote the localization of \(\ZZ \) at
+\(\ZZ \setminus (p) \)---the set of all rational number \(a / b \) where
+\(p \nmid b\). With a little bit of cross multiplying, we can show that every
+element of \(\ZZ _{(p)}\) is a power of \(p\) times a unit---and so all primes
+in \(\ZZ _{(p)}\) are associate.
+
+\section{Some Arithmetic Functions}%
+\label{sec:arithfuns}
+
+We are interested in the number \(a \in \ZZ \) that are ``square-free''. Why? It
+means that their prime decomposition has no repeated primes. Now given any
+\(n \in \ZZ \) we can obviously separate \(n\) into its ``square containing''
+and ``square-free'' parts.
+
+\begin{prop}
+  If \(n \in \ZZ \), \(n\) can be written in the form \(n=ab^2\) where
+  \(a,b \in \ZZ \) and \(a\) is square-free.
+\end{prop}
+
+Note: it is \emph{not} the case that \(b\) is square free---in fact often it is
+not. For example \(8=2 \cdot 2^2\). This lemma can be used to prove that there
+are infinitely many primes in \(\ZZ \), but we us proved that so there is no
+reason to do that again.
+
+Now we define a handful of arithmetic functions (functions on the integers).
+First we define \(v(n)\) to be the number of positive divisors of \(n\) and
+\(\sigma(n)\) is the sum of the positive divisors of \(n\). For example
+\(v(3)=2,v(6)=4,v(12)=6\) and \(\sigma(3)=4,\sigma(6)=12,\sigma(12)=28\). We can
+use the fundamental theorem of arithmetic to prove some nice formulas of \(v\)
+and \(\sigma\):
+
+\begin{prop}
+  If \(n\) is a positive integer and \(n=p_1^{a_{1}}\cdots p_t^{a_t}\) is its
+  prime decomposition, then
+  \begin{enumerate}[(a)]
+    \item \(v(n) = (a_1+1)\cdots(a_t+1)\)
+    \item \(\sigma(n) = \left( \frac{p_1^{a_1+1}}{p_1-1} \right)\cdots \left( \frac{p_t^{a_t+1}}{p_t-1} \right) \)
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  To prove (a), see that \(m\mid n\) iff \(m=p_1^{b_{1}}\cdots p_t^{b_t}\) and
+  \(0\leq b_i\leq a_i\) for each \(i\). Thus the positive divisors of \(n\) are
+  in \(1-1\) correspondence with \(n\)-tuples \((b_1, \dots, b_t)\) with
+  \(0\leq b_i\leq a_i\) and there are exactly \((a_1+1)\cdots(a_t+1)\) such
+  tuples (\(a_i+1\) choices for the \(i\)-th slot).
+
+  For (b), notice that \(\sigma(n)= \sum p_1^{b_{1}}\cdots p_t^{b_t}\) where the
+  sum is over all possible \(n\)-tuples of choices of the \(b_i\) mentioned
+  above. Since these choices are independent we can also write
+  \(\sigma(n) = \left( \sum_{b_1=0}^{a_1}p_1^{b_1} \right) \cdots \left( \sum_{b_t=0}^{a_t}p_t^{b_t} \right) \)---and
+  we may use standard results relating to geometric sums to complete the proof.
+\end{proof}
+
+One of the ``most important'' arithmetic functions is the M\"obius \(\mu\)
+function. It is defined for \(n \in \ZZ ^+\)as follows:
+\[
+  \mu(n) =
+  \begin{cases}
+    1 & \text{if \(n = 1\)}\\
+    0 & \text{if \(n\) is not square free}\\
+    {(-1)}^t & \text{if \(n=p_1p_2\cdots p_t\) where the \(p_i\) are distinct
+      positive primes}
+  \end{cases}
+\]
+
+\begin{prop}
+  If \(n>1\), \(\sum_{d\mid n} \mu(d)=0\)
+\end{prop}
+\begin{proof}
+  If \(n=p_1^{a_{1}}\cdots p_t^{a_t}\), then
+  \(\sum_{d\mid n}\mu(d)= \sum_{(\varepsilon1, \dots ,\varepsilon_t)} \mu(p_1^{\varepsilon_1}\cdots p_t^{\varepsilon_t})\)
+  where the \(\varepsilon_i\) are either 1 or 0. Note that there are
+  \emph{technically} more terms in the sum, but \(\mu\) makes them 0. Thus,
+  \[
+    \sum_{d\mid n}\mu(d) = 1-t + \binom{t}{2} - \binom{t}{3} +\cdots+(-1)^t = (1-1)^t=0
+  \]
+\end{proof}
+
+While \(\mu\) may seem like nonsense, it is useful in the context of the
+Dirichlet Product. If \(f,g:\ZZ ^+ \to \CC \), then the \textbf{Dirichlet
+  Product}
+of \(f\) and \(g\) is \(f\circ g(n) := \sum f(d_1)g(d_2)\) where the sum ranges
+over all pairs \((d_1,d_2)\) such that \(d_1d_2=n\). It can be easily checked
+that this product is associative.
+
+Define \(\mathbb{I}\) to be 1 at 1 and 0 at all other positive integers---this
+it the identity for the Dirichlet product. Define \(I(n)=1\) for all
+\(n \in \ZZ^+\). Then \(f\circ I(n)=I\circ f(n) = \sum_{d\mid n}f(d)\).
+
+\begin{lemma}
+  \(I\circ \mu = \mu\circ I = \mathbb{I}\)
+\end{lemma}
+\begin{proof}
+  Clearly they agree at 1. If \(n>1\), then
+  \(\mu\circ I(n) = \sum_{d\mid n} \mu(d) =0\) and similarly for the other way.
+\end{proof}
+
+Now comes (what appear to me) one of the biggest results of this chapter---I'm
+not going to lie to you and say that I understand why.
+
+\begin{theorem}
+  Let \(F(n)= \sum_{d\mid n}f(d)\). Then \(f(n) = \sum_{d\mid n}\mu(d) F(n / d)\).
+\end{theorem}
+
+While I don't understand why it's important, I can say that the proof is pretty
+slick:
+
+\begin{proof}
+  \(F= f \circ I\), so
+  \(F \circ \mu= (f\circ I) \circ \mu = f \circ (I\circ\mu)=f\circ\mathbb{I} = f\).
+  To be explicit, \(f(n) = F\circ\mu(n)=\sum_{d\mid n} \mu(d)F(n / d)\).
+\end{proof}
+
+A cool thing! While we considered complex valued functions, the same result
+holds if our functions (\(f\) and \(F\)) take value in \emph{any} abelian group! In fact, the
+proof is identical! There only slight technicality is that we have multiplication
+in our sum. There are two ways to deal with this. For one, we can note that
+\(\mu\) only output \((0 \text{and} \pm 1)\), so we can interpret the multiplication as the
+sign of \(F( n / d )\) in our sum. Alternatively, recall that we can see any
+abelian group as a \(\ZZ \) module and then everything is fine!
+
+We now introduce a new arithmetic function! The Euler \(\phi\) function! For
+\(n \in \ZZ ^+\), \(\phi(n)\) is the number of integer's between 1 and \(n\) that
+are prime to \(n\). For example \(\phi(1)=1,\phi(5)=4,\phi(6)=2\). It is useful
+to know that if \(p\) is prime, then \(\phi(p)=p-1\).
+
+\begin{prop}
+\(\sum_{d\mid n}\phi(d)=n\)
+\end{prop}
+\begin{proof}
+  Consider the rationals
+  \(\frac{1}{n}, \frac{2}{n}, \dots , \frac{n-1}{n}, 1\) each reduced to lowest
+  terms. Each of the denominators divide \(n\). If \(d\mid n\), then there are
+  exactly \(\phi(d) \) entries in the list with \(d\) in the denominator. This
+  proves our proposition.
+\end{proof}
+\begin{remark}
+  I'll be honest, this proof isn't entirely convincing in-and-of-itself. I
+  worked out the case of \(n=12\), and I can see that this method holds water
+  but I think that the proof (as presented in the text) is a little bit lacking.
+\end{remark}
+
+\begin{prop}
+  If \(n=p_1^{a_{1}}\cdots p_t^{a_t}\), then
+  \[
+    \phi(n) = n(1-(1 /p_1))\cdots(1-(1 /p_t))
+  \]
+\end{prop}
+
+\begin{proof}
+  Since \(n=\sum_{d\mid n}\phi(d)\) we can use the M\"obius inversion theorem so
+  see that
+  \begin{align*}
+    \phi(n) &= \sum_{d\mid n}\mu(d) \frac{n}{d} \\
+         &= n - \sum_i \frac{n}{p_i} + \sum_{i<j} \frac{h}{p_i p_j } - \cdots \\
+         &=  n(1-(1 /p_1))\cdots(1-(1 /p_t))
+  \end{align*}
+\end{proof}
+
+This proof is\(\dots\) bad. Like just bad and unintuitive. Thankfully in the next
+chapter there is a better one.\footnote{It would be good to note here that I am
+  writing these notes after having written up chapter 3. I put this one off.}
+
+\section{\(\sum 1 / p\) Diverges}%
+\label{sec:1pdiv}
+
+\begin{theorem}
+  \(\sum_{p \text{ prime}} \frac{1}{p}\) diverges.
+\end{theorem}
+
+\begin{proof}
+  Let \(p_1, p_2, \dots , p_{l(n)}\) be the list of primes less that \(n\) and
+  let \(\lambda(n)= \prod_{i=1}^{l(n)} {(1- 1 /p)}^{-1}\). Since
+  \({(1- 1 /p)}^{-1}=\sum_{a_i=0}^{\infty} \frac{1}{p_i^{a_i}}\), we have that
+  \[
+    \lambda(n) = \sum (p_1^{a_{1}}\cdots p_t^{a_t}) ^{-1}
+  \]
+  where the sum runs over all \(t\)-tuples of nonnegative integers
+  \((a_1, \dots, a_t)\) [use some combo if you don't believe this]. Harder to
+  believe (and I don't) is that
+  \(1+\frac{1}{2}+ \frac{1}{3}+ \cdots + \frac{1}{n} < \lambda(n)\) (and so \(\lambda(n)\to \infty\)).
+
+  Next consider \(\log \lambda(n)\). Indeed,
+  \begin{align*}
+    \log \lambda(n) &= - \sum_{i=1}^t \log (1-p_i ^{-1})\\
+              &= \sum_{i=1}^t \sum_{m=1}^{\infty} {(m p_i^m)} ^{-1}
+              &=  p_1 ^{-1}+p_2 ^{-1} + \cdots + p_t ^{-1} +  \sum_{i=1}^t \sum_{m=2}^{\infty} {(m p_i^m)} ^{-1}
+  \end{align*}
+  But see that
+  \(\sum_{m=2}^{\infty} {(m p_i^m)}^{-1}< \sum_{m=2}^{\infty} < 2p_i ^{-2}\).
+  And so [at this point I am lost as to what is going on]
+  \(\log \lambda(n) < p_1 ^{-1} + p_2 ^{-1} + \cdots + p_t ^{-1} + 2(p_1 ^{-2}+\cdots+p_t ^{-2})\).
+  As we know, \(\sum n^{-2}\) converges, so it follows that \(\sum p^{-2}\) also
+  converges.
+
+  But then if \(\sum p ^{-1}\) converged there would be some integer \(N\) such
+  that \(\log \lambda(n)<N\) for all \(n \in \ZZ \). This is false, so
+  \(\sum p ^{-1}\) must diverge.
+\end{proof}
+
+Next is a \emph{wack} example that we couldn't quite understand during our
+meeting. I tried to make sense of it but it didn't go well.
+
+\section{The Growth of \(\pi(x)\)}%
+\label{sec:growpix}
+
+Recall that \(\pi(x)\) gives the number of primes less than \(x\). People are
+intensely interested in the growth of \(\pi(x)\). We talked about it during our
+meeting and I see that their are applications to the growth of \(\pi(x)\)---esp
+when it comes to cryptography. At the same time, up just feels so arbitrary to
+me. Primes never really felt very important to me and spending 3 pages fiddling
+with inequalities feels even more tiring. From my conversations with Karl it
+seems like what is going on is some sort of asymptotic approximation, but the
+only time that I've seen/worked with asymptotics was the 2 weeks we spend on it
+in 530. Most (read: all) of the results in this section will simply be stated. I
+read them through in my initial pass through the text and I will be going
+through them again as I type---I will be including my comments on the proofs in
+the text.
+
+\begin{prop}
+  \(\pi(x) \leq \log \log x\) for \(x\geq 2\).
+\end{prop}
+
+\begin{proof}[Comment]
+  This one is cute! Bound each prime under \(p_k < 2^{(2^k)}\) and then take
+  double logs!
+\end{proof}
+
+The bound above is then immediately tightened---we have that
+\(\pi(x)\geq \frac{\log x}{2 \log 2}\). Both of these show that
+\(\pi(x)\to \infty\) as \(x\) gets large (yet another proof that there are
+infinite primes!). We define a new function
+\(\theta(x) = \sum_{p\leq x} \log p\) (we set \(\theta(1)=0\)), which is a close
+cousin of \(\pi(x)\). In fact, we can use \(\theta\) to bound \(\pi(x)\) from
+above!
+
+\begin{prop}
+  \(\theta(x) < (4\log x)x\)
+\end{prop}
+
+\begin{proof}[Comment]
+  This bounding argument is clever! It uses \(\binom{2n}{n}\) to bound
+  \(2^{2n}>\prod_{p>n}^{p<2n}\). Taking logs, the RHS turns into
+  \(\theta(2n)-\theta(n)\). We then sum this relation and simplify.
+\end{proof}
+
+The next two corollaries return to tightening our bounds on \(\pi(x)\). The
+thing that seems strange to me is the language of ``positive constants''
+\(c_1,c_2\). Do we know what they are? I have to think that they are computable,
+but the proofs skip that part under the guise of ``the proof then follows from\(...\)''.
+
+\begin{corollary}
+  There are positive constants \(c_1,c_2\) such that
+  \[
+    c_2 \frac{x}{\log x} < \pi(x) < c_1 \frac{x}{\log x}
+  \]
+\end{corollary}
+
+\begin{proof}
+  The only comment I can find to make is that in the proof of the lower bound
+  what we actually do is bound
+  \[
+    c_2 \frac{x}{\log x} < \frac{\theta(x)}{\log x} \leq \pi(x)
+  \]
+\end{proof}
+
+With these corollaries, we have that
+\[
+  \pi(x) \left( \frac{\log x}{x} \right) \to 1 \text{as} x \to \infty.
+\]
+This a result that feels like it should be really cool. My understanding is that
+as \(x\) gets large \(\frac{x}{\log x}\) becomes a better and better
+approximation for \(\pi(x)\) which is (as I understand it) important for some
+reason or another. The main issue I have with seeing this as an important
+result is that I have only ever seen this used as a mathematical party trick.
+I'm sure it has an application somewhere but I'm not sure where or why.

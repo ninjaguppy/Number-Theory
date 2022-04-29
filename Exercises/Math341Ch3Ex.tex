@@ -1,0 +1,191 @@
+\chapter*{Chapter 3 Selected Problems}
+
+\paragraph{Problem 1:} Show that there are infinitely many primes congruent to
+\(-1\) modulo \(6\).
+
+\begin{proof}
+  Before we show that there are inifinetly many primes of this form, we need to
+  show that there are \emph{any} primes of the for \(6k-1\).
+  Division by 6 gives remainder of \(-1,0,1,2,3,4\)---so any odd number is
+  necessarily of the form \(6k+1, 6k+3, 6k-1\). Some algebra gives that
+  \begin{align*}
+    (6k+1)(\overline{6k}+1) &= 6(6k \overline{k}-k-\overline{k})+1 \\
+    (6k+3)(\overline{6k}+3) &= 6(6k \overline{k}-3k-3\overline{k}+1)+3 \\
+  \end{align*}
+  and so any odd number of the form \(6k-1\) must be divisible by a prime of the
+  form \(6k-1\)---otherwise how did we leave the closed systems of \(6k+1\) and
+  \(6k+3\).
+
+  Not suppose that there were a finite list of positive primes, \(p_1, \dots ,p_n\) of
+  the form \(p_i=6k_i-1\) and set \(N= 6 \prod_i p_i -1\). Now \(N\) can be
+  divisible by any of the \(p_i\) but is of the form discussed above---so our list
+  must be incomplete! Therefore there must be infinite primes of the for
+  \(6k-1\) and we are done!
+\end{proof}
+
+\paragraph{Problem 4:} Show that the equation \(3x^2+2 = y^2\) has no solutions
+in the integers.
+
+\begin{proof}
+  Seeking to use the result from the text, we set \(f(x,y) = 3x^2-y+2\) and
+  see what happens when we plug in odd or even numbers:
+  \begin{align*}
+    f(0,0) &= 2 \\
+    f(1,0) &= 3+2=5 \\
+    f(0,1) &= -1+2=1 \\
+    f(1,1) &= 3-1+2=4
+  \end{align*}
+  This rules out solutions of the form \((e,o)\) and \((o,e)\). But tells us
+  nothing about the cases of \((e,e)\) or \((o,o)\). The natural next step would
+  be to check solutions mod 4. Notice that this only helps us in the case that
+  we are \((e,e)\)---as the \(o,o\) case is equal to 4. Before we deal with
+  that, we show there can't be any solutions of the for \((e,e)\) by show that
+  \(f(e,e)\) is never 0 mod 4
+  \begin{align*}
+    f(0,0) &= 2\\
+    f(2,0) &= 0-2^2+2 \equiv 2 \\
+    f(0,2) &= 3\cdot 2^2-0+2 \equiv 2 \\
+    f(2,2) &= 3\cdot 2^2-2^2+2 \equiv 2 \\
+  \end{align*}
+  Since the \((e,e)\) case always gives us 2 (mod 4), we can't have a solution
+  of the form \((e,e)\).
+
+  Now we turn our attention back to the case of \((o,o)\). We will check these
+  solutions mod 3. There are 4 cases to check, but since we consider \(3\) to be
+  0, we can use our previous computation:
+  \begin{align*}
+    f(0,0) &= 2 \equiv 2 (3) \\
+    f(1,0) &= 3+2=5 \equiv 1 (3)\\
+    f(0,1) &= -1+2=1 \equiv 1 (3)\\
+    f(1,1) &= 3-1+2=4\equiv 1 (3)
+  \end{align*}
+  And so any  solution of the form \((o,o)\) fails mod 3 and we have
+  exhausted all the possible cases!
+\end{proof}
+
+\paragraph{Problem 12:} Show that if \(p\) is prime and \(1\leq k\leq p-1\),
+then \(p \mid  \binom{p}{k}\). Deduce that \((a+1)^p \equiv a^p+1 (p)\).
+
+\begin{proof}
+  See that if \(1\leq k\leq p-1\), then
+  \[
+    \binom{p}{k} = \frac{1 \cdot 2 \cdots p}{(1\cdot 2 \cdots k)(1 \cdot 2 \cdots (p-k))}
+    = \frac{(p-k) \cdot  (p-k+1) \cdots p}{1 \cdot 2 \cdots (p-k)}
+  \]
+  but since \(p\) is prime and \(p\) does not appear in the denominator, \(p\mid \binom{p}{k}\)
+
+  For the second part, consider the fact that
+  \begin{align*}
+    (a+1)^p &= \sum_{k=0}^p \binom{p}{k} a^{b-k}.
+  \end{align*}
+  By the above work, everything except for the \(k=0,p\) drops to 0 mod \(p\).
+  The \(k=0\) gives \(a^p\) and the \(k=p\) case gives \(1\). Thus, we have
+  recovered the freshmans dream:
+  \[
+    (a+1)^p \equiv a^p+1 (p)
+  \]
+\end{proof}
+
+\paragraph{Problem 17 :} Let \(f \in\ZZ[x]\) and
+\(n=p_1^{a_1}\cdots p_t^{a_t}\). Show that \(f(x) \equiv 0 (n)\) has a solution
+iff \(f(x) \equiv 0 (p_i^{a_i})\) has a solution for each \(i\).
+
+\begin{proof}
+  (\(\implies \)) This direction is obvious. Since \(p_i^{a_i}\mid n\) for all
+  \(i\), if \(n\mid f(x)\), then \(p_i^{a_i}\mid f(x)\).
+
+  (\(\impliedby \)) We know that \(p_1^{a_1} \mid  f(x)\), so
+  \(f(x) = p_1^{a_1}k_1\). But since \(p_2^{a_2} \mid f(x)\) and
+  \(p_2^{a_2} \nmid p_1^{a_1}\), we know that \(f(x)=p_1^{a_1}p_2^{a_2}k_2\).
+  Continuing for all the \(p_i\), we have that
+  \(f(x)=p_1^{a_1}\cdots p_t^{a_t}k_t\). It follows immediately that \(n|f(x)\).
+\end{proof}
+
+\paragraph{Problem 18:} Let \(N\) be the number of solutions to
+\(f(x) \equiv 0 (m)\) and \(N_i\) the number of solutions to
+\(f(x) \equiv 0 (p_i^{a_i})\). Show that \(N = \prod_{i}  N_i\).
+
+\begin{proof}
+  As seen above, a solution to \(f(x) \equiv 0 (n)\) can be constructed from a
+  product of solutions to solutions to \(f(x) \equiv 0 (p_i^{a_i})\). If we view
+  this product as a \(t\)-tuple of integers \(x_i\), where each \(x_i\) solve
+  the related equivalence (to \(p_i^{a_i}\)), then our solution is given by the
+  map \((x_1, \dots , x_t) \mapsto \prod x_i\). There are \(N_i\) solutions for
+  each entry, so some basic combinatorics tells us that there are
+  \(\prod_i N_i\) possible combinations, and hence \(\prod_i N_i\) possible solutions!
+\end{proof}
+
+\paragraph{Problem 22:}  Formulate and prove the Chinese Remainder Theorem for a
+PID. I was actually able to prove it for any commutative ring with unity!
+
+\begin{proof}[Solution:]
+  First we need a concept of coprime ideals. Given two ideals \(I,J \subset R\),
+  we say that they are \textbf{coprime} if these are elements
+  \(r \in I, s \in J\) such that \(r+s = 1\)---Notice that this says that
+  \(I+J = R\). It is will known that \(IJ \subset I \cap J\), but the opposite
+  containment can occasionally hold:
+
+  \begin{nlemma}
+    If \(R\) is any commutative ring with \(1\)  and \(I,J\) are coprime ideals,
+    then \(IJ = I \cap J\).
+  \end{nlemma}
+
+  \begin{proof}
+    As mentioned above, \(\subset\) is well known, so let \(a \in I \cap J\).
+    Since \(I,J\) are coprime, we have that there are \(r\in I, s \in J\) such
+    that \(r+s=1\). We can write \(a=a(r+s)=ar+as\)---this a linear combination
+    of \(r\) and \(s\), so it lives in \(IJ\), hence \(a \in IJ\).
+  \end{proof}
+
+  With our lemma proven, we can proceed. For those fearful of category theory,
+  we recommend that you look away because we invoke the universal property of
+  products: given a product \(\prod X_i\) and any set of maps
+  \(f_i: Y \to X_i\), there is a unique map \(f\) such that the following
+  diagram commutes for every \(i\):
+  % https://q.uiver.app/?q=WzAsMyxbMCwwLCJZIl0sWzAsMiwiWF9JIl0sWzIsMiwiXFxwcm9kX0kgWF9JIl0sWzAsMSwiZl9JIl0sWzIsMSwiXFxwaV9JIiwyXSxbMCwyLCJmIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+\[\begin{tikzcd}
+	Y \\
+	\\
+	{X_i} && {\prod_i X_i}
+	\arrow["{f_i}", from=1-1, to=3-1]
+	\arrow["{\pi_i}"', from=3-3, to=3-1]
+	\arrow["f", dashed, from=1-1, to=3-3]
+  \end{tikzcd}\]
+  With this background, we can finally state and prove our theorem.
+  \begin{ntheorem}
+   Let \(I_1, \dots , I_n\) be pairwise coprime ideals in \(R\), a commutative
+   ring with unity and \(I = \prod_i I_i\). Then the natural map
+   \[
+     \varphi: \faktor{R}{I} \to \prod_i \faktor{R}{I_i}
+   \]
+   is an isomorphism.
+  \end{ntheorem}
+  \begin{proof}
+    Let \(\rho_i: R\to \faktor{R}{I_i} \) and
+    \(\pi: \prod_i \faktor{R}{I_i} \to \faktor{R}{I_i} \) be the standard
+    quotient and projection maps. Invoking the universal property of products,
+    we have a map \(\varphi\) such that the following diagram commutes for all \(i\):
+    % https://q.uiver.app/?q=WzAsMyxbMCwwLCJSIl0sWzAsMiwiXFxmYWt0b3J7Un17SV9JfSJdLFsyLDIsIlxccHJvZF9JIFxcZmFrdG9ye1J9e0lfSX0iXSxbMCwxLCJcXHJob19JIl0sWzIsMSwiXFxwaV9JIiwyXSxbMCwyLCJcXHZhcnBoaSJdXQ==
+\[\begin{tikzcd}
+	R \\
+	\\
+	{\faktor{R}{I_i}} && {\prod_i \faktor{R}{I_i}}
+	\arrow["{\rho_i}", from=1-1, to=3-1]
+	\arrow["{\pi_i}"', from=3-3, to=3-1]
+	\arrow["\psi", from=1-1, to=3-3]
+\end{tikzcd}\]
+    Category also guarantees that \(\psi\) is a ring homomorphism, so there
+    is no need to check that! Further, it must be the case that \(\psi\) is
+    onto. See that both \(\pi_i\) and \(\rho_i\) are onto. This, combined with
+    the fact that \(\pi_i\) is a projection onto \(\faktor{R}{I_i} \) and the
+    commutativity of the diagram gives us that  \(\psi\) must be onto as well.
+
+    What is the kernel of \(\psi\)? It is precisely the elements which are in
+    each of the \(I_i\) (as the must be zero in each component)---meanning the
+    kernel is \(\bigcap_i I_i= \prod_i I_i\) (by the lemma). Thus by the first
+    isomorphism theorem, \(\psi\) descends to an isomorphism.
+   \[
+     \varphi: \faktor{R}{I} \to \prod_i \faktor{R}{I_i}
+   \]
+  \end{proof}
+\end{proof}
