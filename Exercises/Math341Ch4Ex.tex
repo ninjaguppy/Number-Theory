@@ -1,0 +1,48 @@
+\chapter*{Chapter 4 Selected Problems}
+
+\paragraph{Problem 3:}
+Suppose that \(a\) is a primitive root modulo \(p^n\), for \(p\) an odd prime.
+Show that \(a\) is a primitive root modulo \(p\)
+
+\begin{proof}
+  Fix \(k \in \ZZ \). Let \(\overline{k}\) and \(\hat{k}\) denote the image of
+  \(k\) in \(\ZZ _p\) and \(\ZZ _{p^n}\) respectively. We know that \(\hat{a}\)
+  generates \(U(\ZZ_{p^n})\), so there is an integer \(l\) such that
+  \(\hat{a}^l = \hat{k} \implies a^l \equiv k (p^n) \implies  a^l = k + bp^n\).
+  If we take this final equation mod \(p\), it is immediate that
+  \(\overline{a}^l=\overline{k}\), and so \(\overline{a}\) generates \(U(\ZZ_p)\).
+\end{proof}
+
+\paragraph{Problem 6:}
+If \(p=2^n+1\) is a Fermat prime, show that 3 is a primitive root modulo \(p\).
+
+\begin{proof}
+  From proposition \(4.1.1\), we have that
+  \begin{align*}
+    3^{2^n}-1  &\equiv (3-1)(3-2)(3-3)\cdots(3-2^{n}+2) \; (p) \\
+              &\equiv 0 \; (p)
+  \end{align*}
+  It remains to be shown that \(2^n\) is the smallest such integer.
+\end{proof}
+
+\paragraph{Problem 13:}
+Let \(G\) be a finite cyclic group and \(g \in G\) a generator. Show that all
+the other generators are of the form \(g^k\), where \((k,n)=1\) for \(n\) the
+order of \(G\).
+
+\begin{proof}
+  Let \(a\) be another generator of \(G\). Sinec \(g\) generates \(G\), we know
+  that there is some integer \(k\) such that \(a=g^k\)---we must show that
+  \((k,n)=1\). Suppose that it is not, \ie \((k,n)=l\) for \(l>1\). But then
+  \(a^l=g^{kl}=1\), and so \((a)\) has order \(l<n\), and so \(a\) does not
+  generate \(G\).
+\end{proof}
+
+\paragraph{Problem 14:}
+Let \(A\) be a finite abelian group and \(a,b \in A\) element's of order \(m,n\)
+resp. If \((m,n)=1\), prove that \(ab\) has order \(mn\).
+
+\paragraph{Problem 15:}
+Let \(K\) be a field and \(G \subset K^*\) a finite subgroup of the
+multiplicative group of \(K\). Extend the argument of theorem 1 to show that
+\(G\) is cyclic.
