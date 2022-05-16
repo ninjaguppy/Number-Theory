@@ -42,7 +42,26 @@ order of \(G\).
 Let \(A\) be a finite abelian group and \(a,b \in A\) element's of order \(m,n\)
 resp. If \((m,n)=1\), prove that \(ab\) has order \(mn\).
 
+\begin{proof}
+  Since \(A\) is finite, there is some \(k \in \ZZ ^+\) such that \((ab)^k=1\).
+  But then we can manipulate this:
+  \begin{align*}
+    a^k &= b^{-k} \\
+        &\Downarrow\\
+    a^{kn} &= b^{-kn}\\
+        &\Downarrow\\
+    a^{kn} &= 1
+  \end{align*}
+  Since \(|a| = m\), it must be the case that \(m \mid  kn\). But since
+  \((m,n)=1\), \(m\mid k\). Similarly, we can show that \(n \mid k\). We have
+  shown that if \((ab)^k=1\), then \(k\) is of the form \(\ell mn\) for some
+  \(\ell \in \ZZ \). It follows that \(|ab| = mm\).
+\end{proof}
+
 \paragraph{Problem 15:}
 Let \(K\) be a field and \(G \subset K^*\) a finite subgroup of the
 multiplicative group of \(K\). Extend the argument of theorem 1 to show that
 \(G\) is cyclic.
+
+{\color{red} come back and do this after you type up the proof bc you don't
+  quite understand it}
